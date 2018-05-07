@@ -8,4 +8,4 @@ Tech Stack:
 - Javascript (ES6)
 - Vue JS
 - Vuex
-- Foundation
+- Foundation 6
