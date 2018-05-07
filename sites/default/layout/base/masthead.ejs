@@ -1,0 +1,94 @@
+<header class="masthead">
+	<nav class="navigation navigation--secondary show-for-medium">
+		<div class="row">
+			<div class="large-12 columns">
+				<ul>
+					<li>
+                        <a href="https://www.trane.com/residential/en/for-dealers.html" data-analytics-element-clicked="" data-analytics-type="LINK" data-analytics-text="DEALERS AND DISTRIBUTORS" data-analytics-location="HEADER" data-analytics-position="" data-analytics-outcome="INTERNAL LINK">Dealers and Distributors</a>
+                    </li>
+					<li>
+                        <a target="_blank" href="http://www.trane.com/commercial/north-america/us/en.html" data-analytics-element-clicked="" data-analytics-type="LINK" data-analytics-text="TRANE COMMERCIAL" data-analytics-location="HEADER" data-analytics-position="" data-analytics-outcome="EXTERNAL LINK">Trane Commercial <i class="ss-action"></i></a>
+                    </li>
+				</ul>
+			</div>
+		</div><!-- /.row -->
+	</nav><!-- /.navigation--secondary -->
+
+	<nav class="navigation navigation--primary show-for-medium">
+		<div class="row">
+			<div class="large-12 columns">
+
+				<div class="navigation__logo"><a href="<%- url_for( '/' ) %>" data-analytics-element-clicked="" data-analytics-type="LOGO" data-analytics-text="TRANE LOGO" data-analytics-location="NAVIGATION" data-analytics-position="" data-analytics-outcome="INTERNAL LINK"><%- image_tag( page.theme.images + '/logos/logo-red.svg', { alt: 'Trane Logo' } ) %></a></div>
+
+				<div class="navigation__links-wrapper">
+					<ul class="navigation__links">
+						<li class="navigation__links-link"><a href="<%- url_for( '/why-trane.html' ) %>" data-analytics-element-clicked="" data-analytics-type="LINK" data-analytics-text="WHY TRANE" data-analytics-location="NAVIGATION" data-analytics-position="" data-analytics-outcome="INTERNAL LINK">Why Trane</a></li>
+						<li class="navigation__links-link"><a href="<%- url_for( '/products.html' ) %>" data-analytics-element-clicked="" data-analytics-type="LINK" data-analytics-text="PRODUCTS" data-analytics-location="NAVIGATION" data-analytics-position="" data-analytics-outcome="INTERNAL LINK">Products</a></li>
+						<li class="navigation__links-link"><a href="<%- url_for( '/savings-and-offers.html' ) %>" data-analytics-element-clicked="" data-analytics-type="LINK" data-analytics-text="FINANCING &amp; OFFERS" data-analytics-location="NAVIGATION" data-analytics-position="" data-analytics-outcome="INTERNAL LINK">Financing &amp; Offers</a></li>
+						<li class="navigation__links-link navigation__links-link--find-dealer"><a class="button button--primary" href="<%- url_for( '/dealer-locator.html' ) %>" data-analytics-text="FIND A DEALER" data-analytics-element-clicked="" data-analytics-type="BUTTON" data-analytics-location="NAVIGATION" data-analytics-position="" data-analytics-outcome="INTERNAL LINK"><i class="ss-location"></i> Find a Dealer</a></li>
+					</ul>
+
+					<div class="navigation__cta hide-for-medium-only" v-if="sitePhone">
+						<div class="navigation__cta-header">Call to speak with dealer</div>
+						<a v-bind:href="'tel:'+sitePhone+''" v-if="sitePhone" data-analytics-element-clicked="" data-analytics-type="BUTTON" data-analytics-text="CALL TO SPEAK WITH DEALER" data-analytics-location="NAVIGATION" data-analytics-position="" data-analytics-outcome="INTERNAL LINK">
+							<div class="navigation__cta-phone"><i class="ss-phone" v-cloak></i><span v-text="sitePhone"></span></div>
+						</a>
+						<div class="t-align-center" v-else>
+							<div class="loader loader--small" v-cloak></div>
+						</div>
+					</div><!-- /.navigation__cta -->
+				</div><!-- /.navigation__links-wrapper -->
+
+			</div>
+		</div><!-- /.row -->
+	</nav><!-- /.navigation--primary -->
+
+	<nav class="navigation navigation--mobile hide-for-medium">
+		<div class="row">
+			<div class="small-12 columns">
+				<div class="navigation__logo"><a href="<%- url_for( '/' ) %>"><%- image_tag( page.theme.images + '/logos/logo-red.svg', { alt: 'Trane Logo' } ) %></a></div>
+
+				<div class="navigation__cta">
+					<a href="<%- url_for( '/dealer-locator.html' ) %>">
+						<div class="navigation__cta-header"><i class="ss-location"></i> Find a dealer</div>
+					</a>
+				</div>
+
+			</div><!-- /.columns -->
+		</div><!-- /.row -->
+
+		<div class="navigation__toggle" v-on:click="isNavOpen = !isNavOpen" v-bind:class="{ 'open': isNavOpen }">
+			<div class="navigation__toggle-icon">
+				<div class="navigation__toggle-icon-line"></div>
+				<div class="navigation__toggle-icon-line"></div>
+				<div class="navigation__toggle-icon-line"></div>
+			</div>
+
+			<div class="navigation__toggle-effect"></div>
+		</div><!-- /.navigation__toogle -->
+
+		<div class="navigation__drawer" v-bind:class="{ 'open': isNavOpen }">
+			<div class="row">
+				<div class="small-12 columns">
+
+					<ul class="navigation__links">
+						<li class="navigation__links-link navigation__links-link-menu">Menu</li>
+						<li class="navigation__links-link navigation__cta" v-if="sitePhone">
+                            <div class="navigation-cta__header">Call to speak with a dealer</div>
+                            <a v-bind:href="'tel:'+sitePhone+''" v-if="sitePhone" class="button button--primary" data-analytics-element-clicked="" data-analytics-type="BUTTON" data-analytics-text="Call to Speak with Dealer" data-analytics-location="NAVIGATION" data-analytics-position="" data-analytics-outcome="INTERNAL LINK"><i class="ss-phone"></i> Tap to call <span class="phone" v-text="sitePhone"></span></a>
+                            <div class="t-align-center" v-else>
+                                <div class="loader loader--small" v-cloak></div>
+                            </div>
+							<div v-if="allowingSiteScheduling"><span v-on:click="openModal('showAppointmentModal')" class="button button--tertiary">Schedule Appointment <i class="ss-navigateright"></i></a></div>
+						</li>
+						<li class="navigation__links-link"><a href="<%- url_for( '/why-trane.html' ) %>" data-analytics-element-clicked="" data-analytics-type="LINK" data-analytics-text="Why Trane" data-analytics-location="NAVIGATION" data-analytics-position="" data-analytics-outcome="INTERNAL LINK">Why Trane <i class="ss-navigateright"></i></a></li>
+						<li class="navigation__links-link"><a href="<%- url_for( '/products.html' ) %>" data-analytics-element-clicked="" data-analytics-type="LINK" data-analytics-text="Products" data-analytics-location="NAVIGATION" data-analytics-position="" data-analytics-outcome="INTERNAL LINK">Products <i class="ss-navigateright"></i></a></li>
+						<li class="navigation__links-link"><a href="<%- url_for( '/savings-and-offers.html' ) %>" data-analytics-element-clicked="" data-analytics-type="LINK" data-analytics-text="Financing &amp; Offers" data-analytics-location="NAVIGATION" data-analytics-position="" data-analytics-outcome="INTERNAL LINK">Financing &amp; Offers <i class="ss-navigateright"></i></a></li>
+						<li class="navigation__links-link"><a href="<%- url_for( '/dealer-locator.html' )%>" data-analytics-text="Find A Dealer" data-analytics-element-clicked="" data-analytics-type="BUTTON" data-analytics-location="NAVIGATION" data-analytics-position="" data-analytics-outcome="INTERNAL LINK">Find a dealer <i class="ss-navigateright"></i></a></li>
+					</ul>
+				</div><!-- /.columns -->
+			</div><!-- /.row -->
+		</div><!-- /.navigation__drawer -->
+
+	</nav><!-- /.navigation--mobile -->
+</header><!--/.masthead -->

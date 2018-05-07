@@ -1,0 +1,25 @@
+<div
+    class="modal modal--dealer-certifications"
+    v-bind:class="'modal--dealer-certifications-' + dealerIndex(dealer)">
+    <div class="modal__body">
+        <div class="row">
+            <div class="large-12 columns">
+                <div class="modal__header" v-text="dealer.data.name"></div>
+
+                <div class="modal__certifications" v-if="showDealerCertifications(dealer)">
+
+                    <ul>
+                        <li v-if="dealer.data.nateCertified"><i class="ss-home"></i> NATE Certified</li>
+                        <li v-if="dealer.data.dealerType !== 'NON-TCS'"><i class="ss-star"></i> Trane Comfort Specialist</li>
+                        <li v-if="dealer.data.displaySupport"><i class="ss-clock"></i> 24/7 Service</li>
+                        <li v-if="dealer.data.financeURL"><i class="ss-bank"></i> Financing Available</li>
+                    </ul>
+
+                </div><!-- /.dealer-locator__card-certifications -->
+            </div><!-- /.columns -->
+        </div><!-- /.row -->
+
+        <div class="modal__close" v-on:click="closeCertificationsModal"><i class="ss-delete"></i></div>
+
+    </div><!-- /.modal__body -->
+</div><!-- /.modal__dealer-certifications -->

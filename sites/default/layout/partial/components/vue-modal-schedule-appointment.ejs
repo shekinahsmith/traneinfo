@@ -1,0 +1,123 @@
+<script type="text/x-template" id="modal-schedule-appointment">
+    <transition name="modal-schedule-appointment">
+        <div class="modal modal--schedule-appointment" v-bind:class="{ 'is-open': showAppointmentModal }">
+            <div class="modal__body">
+                <div class="row collapse">
+                    <div class="large-12 columns">
+
+                        <div class="modal__success" v-if="formSubmittedSuccess">
+                            <div class="modal__success-header headline headline--border headline--3 headline--black">Thank You</div>
+
+                            <p>Your lead was submitted.
+                            <p><span v-text="selectedDealer.data.name"></span> will contact you shortly.</p>
+
+                        </div><!-- /.modal__success -->
+
+                        <div v-else>
+                            <div class="modal__header">Schedule an Appointment</div><!-- /.modal__header -->
+
+                            <div class="modal__form-area">
+                                <form class="modal__form" v-on:submit.prevent="submit" v-on:keydown.enter.prevent="">
+
+                                    <div class="modal__form-group">
+                                        <div class="modal__form-input-wrapper">
+                                            <label for="firstName" class="show-for-medium">First Name</label>
+                                            <span class="modal__form-input-check show-for-medium" v-bind:class="{ 'is-checked': validation.firstName }"></span>
+                                            <input type="text" name="firstName" id="firstName" v-model="formData.firstName" placeholder="First Name">
+                                        </div><!-- .modal__form-input-wrapper -->
+
+                                        <div class="modal__form-input-wrapper">
+                                            <label for="lastName" class="show-for-medium">Last Name</label>
+                                            <span class="modal__form-input-check show-for-medium" v-bind:class="{ 'is-checked': validation.lastName }"></span>
+                                            <input type="text" name="lastName" id="lastName" v-model="formData.lastName" placeholder="Last Name">
+                                        </div><!-- .modal__form-input-wrapper -->
+                                    </div><!-- .modal__form-group -->
+
+                                    <div class="modal__form-group">
+                                        <label for="email" class="show-for-medium">Email Address</label>
+                                        <span class="modal__form-input-check show-for-medium" v-bind:class="{ 'is-checked': validation.email }"></span>
+                                        <input type="email" name="email" id="email" v-model="formData.email" placeholder="Email Address">
+                                    </div><!-- /.modal__form-group -->
+
+                                    <div class="modal__form-group">
+                                        <label for="street" class="show-for-medium">Street Address</label>
+                                        <span class="modal__form-input-check show-for-medium" v-bind:class="{ 'is-checked': validation.street }"></span>
+                                        <input type="search" name="street" id="street" v-model="formData.street" placeholder="Street Address" class="schedule-street">
+
+                                        <!-- hidden fields for smarty mapping -->
+                                        <input type="hidden" class="modal__form-hidden-city schedule-locality">
+                                        <input type="hidden" class="modal__form-hidden-state schedule-area">
+                                        <input type="hidden" class="modal__form-hidden-country schedule-country" value="US">
+                                    </div><!-- /.modal__form-group -->
+
+                                    <div class="modal__form-group">
+                                        <div class="modal__form-input-wrapper">
+                                            <label for="zipcode" class="show-for-medium">ZIP Code</label>
+                                            <span class="modal__form-input-check show-for-medium" v-bind:class="{ 'is-checked': validation.zip }"></span>
+                                            <input type="number" name="zipcode" id="zipCode" v-model="formData.zip" placeholder="Zip Code" class="schedule-zip">
+                                        </div><!-- .modal__form-input-wrapper -->
+
+                                        <div class="modal__form-input-wrapper">
+                                            <label for="phone" class="show-for-medium">Phone Number</label>
+                                            <span class="modal__form-input-check show-for-medium" v-bind:class="{ 'is-checked': validation.phone }"></span>
+                                            <input type="number" name="phone" id="phone" v-model="formData.phone" placeholder="Phone Number">
+                                        </div><!-- .modal__form-input-wrapper -->
+                                    </div><!-- .modal__form-group -->
+
+                                    <div class="modal__form-group">
+                                        <div class="modal__form-input-wrapper">
+                                            <label for="daySelect" class="show-for-medium">What day works best for you?</label>
+                                            <span class="modal__form-input-check show-for-medium" v-bind:class="{ 'is-checked': validation.daySelect }"></span>
+
+                                            <div class="modal__form-select-wrapper">
+                                                <div class="modal__form-select-placeholder" v-bind:class=" {'is-visibile': !validation.daySelect }">
+                                                    <span class="show-for-small-only placeholder-mobile">What day is best for you?</span>
+                                                    <span class="show-for-medium placeholder-desktop">Please Select</span>
+                                                </div>
+                                                <select name="daySelect" id="daySelect" v-model="formData.daySelect">
+                                                    <option value="monday">Monday</option>
+                                                    <option value="tuesday">Tuesday</option>
+                                                    <option value="wedenesday">Wednesday</option>
+                                                    <option value="thursday">Thursday</option>
+                                                    <option value="friday">Friday</option>
+                                                </select>
+                                            </div><!-- /.modal__form-select-wrapper -->
+                                        </div><!-- .modal__form-input-wrapper -->
+
+                                        <div class="modal__form-input-wrapper">
+                                            <label for="apptSelect" class="show-for-medium">Desired Appointment Time</label>
+                                            <span class="modal__form-input-check show-for-medium" v-bind:class="{ 'is-checked': validation.apptSelect }"></span>
+
+                                            <div class="modal__form-select-wrapper">
+                                                <div class="modal__form-select-placeholder" v-bind:class=" {'is-visibile': !validation.apptSelect }">
+                                                    <span class="show-for-small-only placeholder-mobile">Desired Appointment Time</span>
+                                                    <span class="show-for-medium placeholder-desktop">Please Select</span>
+                                                </div>
+                                                <select name="apptSelect" id="apptSelect" v-model="formData.apptSelect">
+                                                    <option value="" selected="selected">Please Select</option>
+                                                    <option value="morning">Morning (8am - 12pm)</option>
+                                                    <option value="afternoon">Afternoon (12pm - 5pm)</option>
+                                                </select>
+                                            </div><!-- /.modal__form-select-wrapper -->
+                                        </div><!-- .modal__form-input-wrapper -->
+                                    </div><!-- .modal__form-group -->
+
+                                    <div class="modal__footer">
+                                        <div class="modal__footer-disclaimer">Appointment times are subject to availability</div>
+
+                                        <button type="button" class="button button--tertiary" v-on:click="clearFields">Clear Fields</button>
+
+                                        <button type="submit" class="button button--primary" v-bind:disabled="!allFieldsValid">Submit <i class="ss-navigateright"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div><!-- /.modal__form-area -->
+                    </div><!-- /.columns -->
+                </div><!-- /.row -->
+
+                <div class="modal__close" v-on:click="closeApptModal" v-bind:class="{ 'is-dark': formSubmittedSuccess}"><i class="ss-delete"></i></div>
+
+            </div><!-- /.modal__body -->
+        </div><!-- /.modal -->
+    </transition>
+</script>

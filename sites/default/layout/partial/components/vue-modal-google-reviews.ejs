@@ -1,0 +1,37 @@
+<script type="text/x-template" id="modal-google-reviews">
+    <transition name="modal-google-reviews">
+        <div class="modal modal--google-reviews" v-bind:class="{ 'is-open': showReviewsModal }">
+            <div class="modal__body">
+                <div class="row">
+                    <div class="large-12 columns">
+
+                        <div class="modal__header">
+
+                            <div class="modal__dealer-name" v-text="selectedDealer.data.name"></div>
+                            <div class="modal__dealer-location"><span v-text="formatCity(selectedDealer.data.city)"></span>, <span v-text="selectedDealer.data.state"></span></div>
+
+                            <div class="modal__dealer-review-average" v-if="selectedDealer.data.googleReviews && selectedDealer.googleReviews.rating > 0">
+                                <review-stars v-bind:rating="selectedDealer.googleReviews.rating"></review-stars>
+                            </div>
+                        </div><!-- /.modal__header -->
+
+                        <ul class="modal__reviews">
+                            <li v-for="review in selectedDealer.googleReviews.reviews" class="modal__review">
+                                <div class="modal__review-header">
+                                    <span class="modal__review-name" v-text="review.author_name"></span>
+                                    <span><review-stars v-bind:rating="review.rating"></review-stars></span>
+                                </div><!--/.modal__review-header -->
+                                <p class="modal__review-content" v-html="shortenedReviewContent(review.text)"></p>
+                            </li>
+                        </ul>
+
+                        <div class="modal__footer"><a href="#">Google Reviews Terms & Conditions</a></div>
+                    </div><!-- /.columns -->
+                </div><!-- /.row -->
+
+                <div class="modal__close" v-on:click="closeReviewModal"><i class="ss-delete"></i></div>
+
+            </div><!-- /.modal__body -->
+        </div><!-- /.modal -->
+    </transition>
+</script>

@@ -1,0 +1,79 @@
+<section class="section <%- section.type.replace('-', '--') %> <% if(section.background_type) { %><%= section.background_type %> <% } %>">
+    <div class="row">
+        <div class="small-12 large-9 large-centered columns">
+            <% section.content.forEach(function(content) { %>
+                <% if(content.title) { %>
+                    <h3 class="headline__title headline--4 headline--red"><%= content.title %></h3>
+                <% } %>
+                <% if(content.text) { %>
+                    <p class="t-align-left"><%= content.text %></p>
+                <% } %>
+                <% if(content.list) { %>
+                    <ul class="list t-align-left">
+                        <% content.list.forEach(function(list) { %>
+                            <% if(list.text) { %>
+                                <li class="list__item">
+                                    <span><%= list.text %></span>
+                                </li>
+                            <% } %>
+                        <% }); %>
+                    </ul>
+                <% } %>
+
+                <% if(content.offer) { %>
+                    <% if(content.offer.headline) { %>
+                        <h3 class="headline headline--bkg headline--bkg-red headline--3 headline--white t-align-left"><%= content.offer.headline %></h3>
+                    <% } %>
+
+                    <div class="offer-card">
+                        <% content.offer.content.forEach(function(content) { %>
+                            <% if(content.title) { %>
+                                <div class="headline headline--light headline--sub t-align-left"><%= content.title %></div>
+                            <% } %>
+                            <% if(content.text) { %>
+                                <p class="t-align-left"><%= content.text %></p>
+                            <% } %>
+
+                            <% if(content.cta) { %>
+                                <div class="card-cta">
+                                    <% if(content.cta.title) { %>
+                                        <div class="headline headline--light headline--sub t-align-left t-t-uppercase"><%= content.cta.title %></div>
+                                    <% } %>
+                                    <% if(content.cta.dates) { %>
+                                        <div class="card-cta__dates flexbox">
+                                            <% content.cta.dates.forEach(function(dates) { %>
+                                                <div class="dates">
+                                                    <% if(dates.title) { %>
+                                                        <div class="dates__title"><%= dates.title %></div>
+                                                     <% } %>
+                                                     <% if(dates.text) { %>
+                                                        <div class="dates__text"><%= dates.text %></div>
+                                                    <% } %>
+                                                </div>
+                                            <% }); %>
+                                        </div>
+                                    <% } %>
+                                    <% if(content.cta.button) { %>
+                                        <div class="card-cta__actions">
+                                            <a href="<%- url_for( '/dealer-locator.html' ) %>" class="button button--tertiary" data-analytics-element-clicked="" data-analytics-type="BUTTON" data-analytics-text="Find A Dealer" data-analytics-location="CONTENTBLOCK" data-analytics-position="" data-analytics-outcome="INTERNALLINK"><%= content.cta.button %> <i class="ss-navigateright"></i></a>
+                                        </div>
+                                    <% } %>
+                                </div>
+                            <% } %>
+                            <% if(content.disclaimer) { %>
+                                <div class="card-disclaimer">
+                                    <% content.disclaimer.content.forEach(function(content) { %>
+                                        <p class="t-align-left"><%= content.text %></p>
+                                    <% }); %>
+                                </div>
+                            <% } %>
+                        <% }); %>
+                    </div>
+                <% } %>
+
+            <% }); %>
+        </div><!-- /.columns -->
+
+    </div><!-- /.row -->
+
+</section><!-- /.section -->

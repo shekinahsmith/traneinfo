@@ -1,0 +1,28 @@
+<section class="section <%- section.type.replace('-', '--') %> <% if(section.background_type) { %><%= section.background_type %> <% } %>">
+    <div class="row">
+        <div class="large-12 columns">
+
+            <h2 class="<%- section.headline.type %>"><%- section.headline.text %></h2>
+
+            <% section.content.forEach(function(content) { %>
+                <% if(content.header) {%>
+                    <h3><%= content.header %></h3>
+                <% } %>
+
+                <% if(content.text) { %>
+                    <p><%= content.text %></p>
+                <% } %>
+
+                <% if(content.list) { %>
+                    <ul class="section__list">
+                        <% content.list.forEach(function(listItem){ %>
+                            <li class="section__list-item"><%= listItem.text %></li>
+                        <% }) %>
+                    </ul>
+                <% } %>
+            <% }); %>
+
+
+        </div><!-- /.row -->
+    </div><!-- /.columns -->
+</section><!--/.section-->

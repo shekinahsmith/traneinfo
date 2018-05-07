@@ -1,0 +1,29 @@
+<footer class="mastfoot">
+
+    <%- partial('../partial/banner/banner-quick-tips') %>
+
+    <nav class="navigation navigation--footer">
+        <div class="row">
+                <div class="navigation__logo"><a href="<%- url_for( '/' ) %>" data-analytics-element-clicked="" data-analytics-type="LOGO" data-analytics-text="TRANE LOGO" data-analytics-location="FOOTER" data-analytics-position="SECONDARY" data-analytics-outcome="INTERNALLINK"><%- image_tag( page.theme.images + '/logos/logo-white.svg', { alt: 'Trane Alternate Logo' } ) %></a></div>
+
+                <div class="navigation__wrapper">
+                    <ul class="navigation-footer-primary">
+                        <li><a href="<%- url_for( '/why-trane.html' ) %>" data-analytics-element-clicked="" data-analytics-type="LINK" data-analytics-text="WHY TRANE" data-analytics-location="FOOTER" data-analytics-position="SECONDARY" data-analytics-outcome="INTERNALLINK">Why Trane</a></li>
+                        <li><a href="<%- url_for( '/products.html' ) %>" data-analytics-element-clicked="" data-analytics-type="LINK" data-analytics-text="PRODUCTS" data-analytics-location="FOOTER" data-analytics-position="SECONDARY" data-analytics-outcome="INTERNALLINK">Products</a></li>
+                        <li><a href="<%- url_for( '/savings-and-offers.html' ) %>" data-analytics-element-clicked="" data-analytics-type="LINK" data-analytics-text="FINANCING &amp; OFFERS" data-analytics-location="FOOTER" data-analytics-position="SECONDARY" data-analytics-outcome="INTERNALLINK">Financing &amp; Offers</a></li>
+                        <li><a href="<%- url_for( '/become-a-trane-comfort-specialist.html' ) %>"  data-analytics-element-clicked="" data-analytics-type="LINK" data-analytics-text="BECOME A TRANE COMFORT SPECIALIST" data-analytics-location="FOOTER" data-analytics-position="SECONDARY" data-analytics-outcome="INTERNALLINK">Become Part of the Trane Family</a></li>
+                    </ul>
+
+                    <ul class="navigation-footer-legal">
+                    <li>Copyright &copy; 2018</li>
+                    <li>
+                        <a href="https://www.trane.com/residential/en/privacy-policy.html" data-analytics-element-clicked="" data-analytics-type="LINK" data-analytics-text="PRIVACY POLICY" data-analytics-location="FOOTER" data-analytics-position="" data-analytics-outcome="INTERNAL LINK">Privacy Policy</i></a>
+                    </li>
+                    <!-- <li><a href="">Sitemap</a></li> -->
+                    </ul>
+                </div>
+        </div><!-- /.row -->
+    </nav>
+    <div class="mastfoot_legal" data-preamp="mastfoot-legal"></div>
+
+</footer><!--/.mastfoot-->

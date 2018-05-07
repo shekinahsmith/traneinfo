@@ -1,0 +1,18 @@
+<ul class="product-category-list">
+
+    <% category_list.forEach(function(category) { %>
+        <li class="product-category-list__item product-category-list__item--<%- category.header.toLowerCase().replace(/\s+/g, '-') %> clearfix">
+            <div class="product-category-list__content-wrap">
+                <div class="product-category-list__item-header headline headline--red headline--3"><%= category.header %></div>
+
+                <a href="<%= url_for( category.href ) %>"class="button button--tertiary" data-analytics-element-clicked="" data-analytics-type="BUTTON" data-analytics-text="<%= category.header %> LEARN MORE" data-analytics-location="CONTENTBLOCK" data-analytics-position="" data-analytics-outcome="INTERNALLINK">Learn More <i class="ss-navigateright"></i></a>
+            </div><!-- /.product-category-list__content-wrap -->
+
+            <div class="product-category-list__illustration">
+                <%- image_tag( page.theme.images + category.image.desktop, { alt: '', class: 'show-for-medium' } ) %>
+                <%- image_tag( page.theme.images + category.image.mobile, { alt: '', class: 'show-for-small-only' } ) %>
+            </div><!-- /.product-category-list__illustration -->
+        </li><!-- /.product-category-list__item -->
+    <% }); %>
+
+</ul><!-- /.product-category-list -->

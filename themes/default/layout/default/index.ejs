@@ -1,0 +1,19 @@
+<%- partial('base/header') %>
+
+<%- partial('base/masthead') %>
+
+<% if(page.hero) { %>
+    <%- partial(`${page.hero.type.split('-')[0]}/${page.hero.type}`, {hero: page.hero}); %>
+<% } %>
+
+<% page.sections.forEach(function(section) { %>
+    <% if((section.type.split('-')[0]) === 'banner') { %>
+        <%- partial(`partial/${section.type.split('-')[0]}/${section.type}`, {banner: section}); %>
+    <% } else { %>
+        <%- partial(`${section.type.split('-')[0]}/${section.type}`, {section: section}); %>
+    <% } %>
+<% }); %>
+
+<%- partial('base/mastfoot') %>
+
+<%- partial('base/footer') %>

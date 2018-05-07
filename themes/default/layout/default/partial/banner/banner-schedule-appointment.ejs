@@ -1,0 +1,37 @@
+<section class="banner banner--background <%- banner.type.replace('-', '--') %>" <% if(banner.background_image){ %> style="background-image:url('<%- url_for( page.theme.images + banner.background_image.desktop ) %>');" <% } %>>
+
+    <% if(banner.background_image.mobile){ %>
+        <div class="banner__background-mobile show-for-small-only" style="background-image:url('<%- url_for( page.theme.images + banner.background_image.mobile ) %>');"></div>
+     <% } %>
+
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <h2 class="banner__header headline <%- banner.headline.type %>"><%- banner.headline.text %></h2>
+            <div class="schedule-appointment__cta flexbox items-center content-center">
+                <a
+                    v-bind:href="'tel:'+sitePhone+''"
+                    v-if="sitePhone"
+                    class="schedule-appointment__cta-phone"
+                    v-bind:data-analytics-htmlid="siteDealer.data.companyID"
+                    v-bind:data-analytics-text="'CALL - ' + siteDealer.data.name"
+                    data-analytics-element-clicked=""
+                    data-analytics-type="NUMBER"
+                    data-analytics-location="BANNER"
+                    data-analytics-outcome="CLICKTOCALL">
+                    <i class="ss-phone"></i>
+                    <div class="schedule-appointment__cta-phone-text">Tap to call</div>
+                    <span v-text="sitePhone"></span>
+                </a>
+                <div class="t-align-center" v-else>
+                    <div class="loader loader--small" v-cloak></div>
+                </div>
+                <button
+                    class="button button--secondary tt-u"
+                    v-on:click="openModal('showAppointmentModal')"
+                    v-if="allowingSiteScheduling"><%- banner.button %><i class="ss-navigateright"></i></button>
+            </div>
+        </div><!-- /.columns -->
+
+    </div><!-- /.row -->
+
+</section><!-- /.section -->

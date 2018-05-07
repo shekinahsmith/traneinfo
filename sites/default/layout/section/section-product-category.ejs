@@ -1,0 +1,17 @@
+<section class="section <%- section.type.replace('-', '--') %> <% if(section.background_type) { %><%= section.background_type %> <% } %>">
+    <div class="row">
+        <div class="small-12 large-10 large-centered columns">
+            <h2 class="section__header headline <%- section.headline.type %>"><%- section.headline.text %></h2>
+
+            <% section.content.forEach(function(content) { %>
+                <% if(content.text) { %>
+                    <p><%= content.text %></p>
+                <% } %>
+            <% }); %>
+        </div><!-- /.columns -->
+
+        <%- partial('../partial/product-category-list', {category_list: section.product_category_list}) %>
+
+    </div><!-- /.row -->
+
+</section><!-- /.section -->

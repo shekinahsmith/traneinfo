@@ -1,0 +1,10 @@
+<section class="section section--dealer-locator">
+    <div class="row">
+        <div class="small-12 large-9 large-centered columns">
+            <h3 class="headline headline--3 headline--black headline--border">Find your local independent Trane dealer</h2>
+            <p>We’ve developed partnerships with expert Trane contractors in the area. Every dealer we refer knows what it takes to ensure you’re completely satisfied when the job is finished.</p>
+        </div><!-- /.columns -->
+
+        <component :is="currentDealerLocator" v-on:get-fuse-number="getDealerFuseNumbers"></component>
+    </div><!-- /.row -->
+</section><!-- /.section--dealer-locator -->

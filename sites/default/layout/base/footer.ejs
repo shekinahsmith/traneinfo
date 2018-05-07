@@ -1,0 +1,14 @@
+            <component
+                v-if="filoSelectedDealer"
+                :dealer="filoSelectedDealer"
+                :is="currentFiloChat"></component>
+            <%- partial('../partial/modals') %>
+        </div><!-- /#app -->
+
+        <%- partial('../partial/vue-components') %>
+
+        <!-- VUEX Polyfill -->
+        <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+        <%- js( [ page.theme.js + '/vendor.js', page.theme.js + '/project.js' ] ) %>
+    </body>
+</html>

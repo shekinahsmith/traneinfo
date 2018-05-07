@@ -1,0 +1,40 @@
+<section class="section section--remove-padding <%- section.type.replace('-', '--') %> <% if(section.background_type) { %><%= section.background_type %> <% } %>">
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <div class="experts flexbox content-center">
+                <%- image_tag( section.services.image, { class: 'experts__img self-end flex-initia' } ) %>
+                <div class="experts__detail content-center flexbox flex-column">
+                    <h2 class="section__header headline <%- section.headline.type %>"><%- section.headline.text %></h2>
+
+                    <% section.content.forEach(function(content) { %>
+                        <% if(content.text) { %>
+                            <p><%= content.text %></p>
+                        <% } %>
+                    <% }); %>
+
+                    <% if(section.services) { %>
+                        <div class="experts__services flexbox items-center content-center">
+                            <% section.services.list.forEach(function(list) { %>
+                                <div class="services flexbox flex-column items-center">
+                                    <div class="services__icon">
+                                        <div class="icon__inner">
+                                            <div class="services__icon__wrap services__icon__wrap--<%- list.class %>">
+                                                <%- image_tag( list.icon, { alt: list.text.full } ) %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="services__text">
+                                        <span><%= list.text.split_top %></span>
+                                        <%= list.text.split_bottom %>
+                                    </div>
+                                </div>
+                            <% }); %>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div><!-- /.columns -->
+
+    </div><!-- /.row -->
+
+</section><!-- /.section -->

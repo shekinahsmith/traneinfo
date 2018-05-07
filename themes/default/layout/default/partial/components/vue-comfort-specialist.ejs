@@ -1,0 +1,126 @@
+<script type="text/x-template" id="comfort-specialist">
+    <div>
+        <div class="specialist__success" v-if="formSubmittedSuccess">
+            <div class="specialist__success-image"><%- image_tag(page.theme.images + '/icons/icon-checkmark-circle.svg') %></div>
+            <div class="specialist__success-headline headline headline--black headline--1">Thank you<br>for your interest</div>
+            <p>Your information has been sent.</p>
+            <p>We’ll be in touch soon.</p>
+        </div>
+
+        <div v-else>
+            <p class="headline--5 fw-300 t-align-left">Trane is always looking for new qualified partners. If you’re interested in becoming an independent Trane dealer, please complete the form below and a Trane representative will be in touch.</p>
+            <form
+                class="form"
+                v-on:submit.prevent="submit"
+                v-on:keydown.enter.prevent="">
+                <div class="field__wrap">
+                    <label for="dealername" class="form__label" v-bind:class="{ 'form__label--isValid': validation.dealername }">Dealership Name</label>
+                    <input class="form__input" type="text" placeholder="Dealership Name" v-model="formData.dealername" name="dealername" title="dealername" />
+                </div>
+                <div class="form__row-to-col">
+                    <div class="field__wrap">
+                        <label for="fname" class="form__label" v-bind:class="{ 'form__label--isValid': validation.fname }">First Name</label>
+                        <input class="form__input" type="text" placeholder="First Name" v-model="formData.fname" name="fname" title="fname" />
+                    </div>
+                    <div class="field__wrap">
+                        <label for="lname" class="form__label" v-bind:class="{ 'form__label--isValid': validation.lname }">Last Name</label>
+                        <input class="form__input" type="text" placeholder="Last Name" v-model="formData.lname" name="lname" title="lname" />
+                    </div>
+                </div>
+                <div class="form__row-to-col">
+                    <div class="field__wrap">
+                        <label for="email" class="form__label" v-bind:class="{ 'form__label--isValid': validation.email }">Email Address</label>
+                        <input class="form__input" type="email" placeholder="Email Address" v-model="formData.email" name="email" title="email" />
+                    </div>
+                    <div class="field__wrap">
+                        <label for="phone" class="form__label" v-bind:class="{ 'form__label--isValid': validation.phone }">Phone Number</label>
+                        <input class="form__input" type="tel" placeholder="Phone Number" v-model="formData.phone" name="phone" title="phone" />
+                    </div>
+                </div>
+                <div class="field__wrap">
+                    <label for="addr" class="form__label" v-bind:class="{ 'form__label--isValid': validation.addr }">Street Address</label>
+                    <input class="form__input cs-street" type="search" placeholder="Street Address" v-model="formData.addr" name="addr" title="addr" />
+                </div>
+                <div class="form__row-to-col">
+                    <div class="field__wrap">
+                        <label for="city" class="form__label" v-bind:class="{ 'form__label--isValid': validation.city }">City</label>
+                        <input class="form__input cs-locality" type="text" placeholder="City" v-model="formData.city" name="city" title="city" />
+
+                        <!-- hidden fields for smarty mapping -->
+                        <input type="hidden" class="hidden-country cs-country" value="US">
+                    </div>
+                    <div class="form__row-mobile">
+                        <div class="field__wrap">
+                            <label for="stateSelect" class="form__label" v-bind:class="{ 'form__label--isValid': validation.stateSelect }">State</label>
+                            <div class="form__dropdown">
+                                <div class="form__dropdown-placeholder show-for-small-only" v-bind:class=" {'is-visibile': !validation.stateSelect }">State</div>
+                                <select class="form__select cs-area" v-model="formData.stateSelect" name="stateSelect">
+                                    <option value="">State</option>
+                                    <option value="AL">AL</option>
+                                    <option value="AK">AK</option>
+                                    <option value="AZ">AZ</option>
+                                    <option value="AR">AR</option>
+                                    <option value="CA">CA</option>
+                                    <option value="CO">CO</option>
+                                    <option value="CT">CT</option>
+                                    <option value="DE">DE</option>
+                                    <option value="FL">FL</option>
+                                    <option value="GA">GA</option>
+                                    <option value="HI">HI</option>
+                                    <option value="ID">ID</option>
+                                    <option value="IL">IL</option>
+                                    <option value="IN">IN</option>
+                                    <option value="IA">IA</option>
+                                    <option value="KS">KS</option>
+                                    <option value="KY">KY</option>
+                                    <option value="LA">LA</option>
+                                    <option value="ME">ME</option>
+                                    <option value="MD">MD</option>
+                                    <option value="MA">MA</option>
+                                    <option value="MI">MI</option>
+                                    <option value="MN">MN</option>
+                                    <option value="MS">MS</option>
+                                    <option value="MO">MO</option>
+                                    <option value="MT">MT</option>
+                                    <option value="NE">NE</option>
+                                    <option value="NV">NV</option>
+                                    <option value="NH">NH</option>
+                                    <option value="NJ">NJ</option>
+                                    <option value="NM">NM</option>
+                                    <option value="NY">NY</option>
+                                    <option value="NC">NC</option>
+                                    <option value="ND">ND</option>
+                                    <option value="OH">OH</option>
+                                    <option value="OK">OK</option>
+                                    <option value="OR">OR</option>
+                                    <option value="PA">PA</option>
+                                    <option value="RI">RI</option>
+                                    <option value="SC">SC</option>
+                                    <option value="SD">SD</option>
+                                    <option value="TN">TN</option>
+                                    <option value="TX">TX</option>
+                                    <option value="UT">UT</option>
+                                    <option value="VT">VT</option>
+                                    <option value="VA">VA</option>
+                                    <option value="WA">WA</option>
+                                    <option value="WV">WV</option>
+                                    <option value="WI">WI</option>
+                                    <option value="WY">WY</option>
+                                </select>
+                                <i class="ss-icon ss-navigatedown"></i>
+                            </div>
+                        </div>
+                        <div class="field__wrap">
+                            <label for="zipcode" class="form__label" v-bind:class="{ 'form__label--isValid': validation.zipcode }">ZIP Code</label>
+                            <input class="form__input cs-zip" type="text" placeholder="ZIP Code" v-model="formData.zipcode" name="zipcode" title="zipcode" />
+                        </div>
+                    </div>
+                </div>
+                <div class="field__wrap t-align-right">
+                    <button class="form__clear button button--tertiary" v-on:click.prevent="clearFields">Clear Fields</button>
+                    <button class="form__submit button button--primary" type="submit" v-bind:disabled="!allFieldsValid">Submit <i class="ss-icon ss-navigateright"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</script>

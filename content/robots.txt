@@ -1,0 +1,14 @@
+# robots.txt for http://www.trane.com/
+# last updated April 10, 2019
+
+User-agent: *
+Noindex: /residential/p/
+Noindex: /residential/en/p/energy-savings/
+Noindex: /residential/en/p/products/
+Noindex: /residential/en/p/savings-and-offers/
+Noindex: /residential/en/p/dealer-locator/
+Noindex: /residential/en/p/maintenance-guide/
+Noindex: /residential/en/p/why-trane/
+Noindex: /residential/en/p/become-a-trane-dealer/
+Noindex: /residential/en/p/ac-repair/
+Noindex: /residential/en/p/heating-repair/

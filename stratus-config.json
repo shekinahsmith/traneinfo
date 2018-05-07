@@ -1,0 +1,70 @@
+{
+  "version": "0.1",
+  "siteName": "traneinfo.com",
+  "generator": "hexo",
+  "defaultsCacheControl": 3600,
+  "currentBranch": "SET_AT_BUILD_TIME",
+  "authenticatedBranches": ["staging"],
+  "defaultMarketingProgramId": "DEFAULT_PROGRAM_ID_IF_LEADS_ARE_SUBMITTED_THROUGH_RV",
+  "aws": {
+    "bucketName": "YOUR_BUCKET",
+    "productionBranch": "master",
+    "siteName": "YOUR_DOMAIN",
+    "snsErrorTopic": "[for notifications of build errors]",
+    "snsSuccessTopic": "[for success notifications]",
+    "cdn": "cloudfront"
+  },
+  "enrolledBranches": [
+    "master",
+    "development",
+    "staging",
+    "uat"
+  ],
+  "geonator": [],
+  "origins":[
+    {
+      "name": "rvservices",
+      "host": "cloudservices.redventures.com",
+      "port": 443,
+      "protocol": "https",
+      "path": "",
+      "sslProtocols": ["TLSv1", "TLSv1.1"],
+      "readTimeout": 5,
+      "keepaliveTimeout": 5,
+      "customHeaders": {}
+    }
+  ],
+  "rules": [
+    {
+      "cacheControl": "68400",
+      "caseSensitive": false,
+      "location": "/",
+      "matchPath": "^/example-.*",
+      "qsa": true,
+      "type": "redirect"
+    },
+    {
+      "cacheControl": "68400",
+      "caseSensitive": false,
+      "location": "https://www.google.com/",
+      "matchPath": "^/other-.*",
+      "qsa": true,
+      "type": "redirect"
+    },
+    {
+      "origin": "rvservices",
+      "matchPath": "^/api/(.*)",
+      "type": "proxy",
+      "find": "/api",
+      "replace": "/stratus"
+    }
+  ],
+  "data:publicize": {
+        "src": ["**/*.js"],
+        "dest": "themes/default/source/assets/default/js",
+        "replace": {
+            "\/s": "_"
+        }
+    },
+    "api:fetch": []
+}

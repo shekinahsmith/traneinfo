@@ -1,0 +1,10 @@
+<section class="banner banner--remove-padding <%- banner.type.replace('-', '--') %> <% if(banner.background_type) { %><%= banner.background_type %> <% } %>">
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="location-lookup flexbox content-center items-center">
+                <div class="<%- banner.headline.type %>"><%- banner.headline.text %></div>
+                <location-lookup></location-lookup>
+            </div>
+        </div><!-- /.columns -->
+    </div><!-- /.row -->
+</section><!--/.section-->

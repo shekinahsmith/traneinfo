@@ -1,0 +1,40 @@
+<script type="text/x-template" id="review-stars">
+    <div class="review-stars">
+        <span v-text="formatNumDecimal(rating)" class="review-stars__number"></span>
+
+        <ul class="review-stars__stars">
+            <li>
+                <i class="ss-halfstar"
+                    v-if="rating % 1 !== 0 && (rating > 0 && rating < 1)"></i>
+                <i class="ss-star"
+                    v-bind:class="{'is-inactive': rating < 1}"></i>
+            </li>
+            <li>
+                <i class="ss-halfstar"
+                    v-if="rating % 1 !== 0 && (rating > 1 && rating < 2)"></i>
+                <i class="ss-star"
+                    v-bind:class="{'is-inactive': rating < 2}"></i>
+            </li>
+            <li>
+                <i class="ss-halfstar"
+                    v-if="rating % 1 !== 0 && (rating > 2 && rating < 3)"></i>
+                <i class="ss-star"
+                    v-bind:class="{'is-inactive': rating < 3}"></i>
+            </li>
+            <li>
+                <i class="ss-halfstar"
+                    v-if="rating % 1 !== 0 && (rating > 3 && rating < 4)"></i>
+                <i class="ss-star"
+                    v-bind:class="{'is-inactive': rating < 4}"></i>
+            </li>
+            <li>
+                <i class="ss-halfstar"
+                    v-if="rating % 1 !== 0 && (rating > 4 && rating < 5)"></i>
+                <i class="ss-star"
+                    v-bind:class="{'is-inactive': rating < 5}"></i>
+            </li>
+        </ul><!-- /.review-stars -->
+
+        <span class="review-stars__text">on Google Reviews</span>
+    </div><!-- /.review-stars-wrapper -->
+</script>

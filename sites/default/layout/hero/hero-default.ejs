@@ -1,0 +1,50 @@
+<div class="hero <%- hero.type.replace('-', '--') %> <%- hero.category %>" <% if(hero.background_image){ %> style="background-image:url('<%= url_for( page.theme.images + '/heroes/' + hero.background_image.desktop ) %>');" <% } %> <% if(hero.preamp_tag) { %> <%- hero.preamp_tag %> <%  } %>>
+
+    <% if(hero.background_image.mobile){ %>
+       <div class="hero__background-mobile show-for-small-only" style="background-image:url('<%= url_for( page.theme.images + '/heroes/' +  hero.background_image.mobile ) %>');"></div>
+    <% } %>
+
+	<div class="row">
+		<div class="large-12 columns">
+
+            <h1 class="hero__header headline <% if(hero.headline.type){ %><%= hero.headline.type %><% } %>">
+                <%= hero.headline.text %>
+            </h1>
+
+            <% if( hero.headline.subText) { %>
+                <div class="<% if(hero.headline.subType){ %><%= hero.headline.subType %><% } %>">
+                    <%= hero.headline.subText %>
+                </div>
+            <% } %>
+
+            <% if( hero.phone) { %>
+                <a
+                    v-bind:href="'tel:'+sitePhone+''"
+                    v-if="sitePhone"
+                    class="hero__phone"
+                    data-analytics-element-clicked="" data-analytics-type="NUMBER"
+                    data-analytics-text="CALL DEALER" data-analytics-location="HERO"
+                    data-analytics-position="" data-analytics-outcome="CLICKTOCALL">
+                    <i class="ss-phone"></i> <span v-text="sitePhone"></span>
+                </a>
+                <div class="t-align-center" v-else>
+                    <div class="loader loader--small" v-cloak></div>
+                </div>
+            <% } %>
+
+			<% if( hero.buttons) { %>
+				<div class="hero__buttons">
+					<% hero.buttons.forEach(function(button) { %>
+                        <a href="<% if ( button.href.indexOf( 'http' ) === 0 ) { %><%= button.href %><% } else { %><%= url_for( button.href ) %><% } // endif %>">
+                            <button class="button button--<% if(button.type){ %><%= button.type %><% }%>" data-analytics-element-clicked="" data-analytics-type="BUTTON" data-analytics-text="<%= button.text %>" data-analytics-location="HERO" data-analytics-position="" data-analytics-outcome="INTERNALLINK">
+                                <%= button.text %> <% if(button.icon){ %> <i class="<%- button.icon %>"></i> <% } %>
+                            </button>
+                        </a>
+					<% }); %>
+				</div>
+            <% } %>
+
+		</div><!-- /.columns -->
+	</div><!-- /.row -->
+</div><!--/.hero-->
+

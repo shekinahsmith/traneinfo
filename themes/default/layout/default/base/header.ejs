@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge"> <!-- † -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title><%- page.title %></title>
+        <%- css( [ page.theme.css + '/project.css' ] ) %>
+        <script>
+            const siteConfig = {
+                fusePool: "<%- site.data.global.fuse.pool %>"
+            };
+        </script>
+            <!-- Start Cohesion -->
+            <style type='text/css'>.preampjs [data-preamp], .fusejs [data-fuse] {opacity: 0 !important}</style>
+            <script>
+            !function(co,h,e,s,i,o,n){var d='documentElement';var a='className';h[d][a]+=' preampjs fusejs';
+            n.k=e;co._Cohesion=n;co._Preamp={k:s,start:new Date};co._Fuse={k:i};co._Tagular={k:o};
+            [e,s,i,o].map(function(x){co[x]=co[x]||function(){(co[x].q=co[x].q||[]).push([].slice.call(arguments))}});
+            h.addEventListener('DOMContentLoaded',function(){co.setTimeout(function(){
+            var u=h[d][a];h[d][a]=u.replace(/ ?preampjs| ?fusejs/g,'')},3e3);
+            co._Preamp.docReady=co._Fuse.docReady=!0});var z=h.createElement('script');
+            z.async=1;z.src='https://cdn.cohesionapps.com/cohesion/cohesion-latest.min.js';h.head.appendChild(z);}
+            (window,document,'cohesion','preamp','fuse','tagular',{
+            environment: "test",
+            tagular:{apiKey:'fb26b6c1-d34d-4e35-9034-50a17b8f322a.1c5a70e7-745a-42c2-b13b-8d949f723aa2'},
+            preamp:{siteId:'5CbhxzXKIFvenjEAkNRhqo'}
+            })
+        </script>
+        <!-- End Cohesion -->
+    </head>
+    <body>
+        <div id="app">

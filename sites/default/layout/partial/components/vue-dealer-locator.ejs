@@ -1,0 +1,133 @@
+<script type="text/x-template" id="dealer-locator-cards">
+    <div class="dealer-locator">
+
+        <div class="dealer-locator__no-dealers" v-if="noDealersLoaded">
+            <div class="row">
+                <div class="large-12 columns">
+
+                    <div class="dealer-locator__no-dealers-header">We're sorry, there are no dealers in <span v-text="noDealerLocationText"></span>.</div>
+
+                    <div class="dealer-locator__service-area dealer-locator__service-area--no-dealers">
+                        <span class="dealer-locator__service-area-header">Try a nearby location:</span>
+
+                        <form class="dealer-locator__service-area-form" data-analytics-form-viewed data-analytics-type="US - NO DEALERS FOUND" data-analytics-location="FIND DEALERS FORM" v-bind:data-analytics-text="searchInput">
+
+                            <input
+                                type="text"
+                                v:bind:placeholder="isUserCanadian ? 'POSTAL CODE' : 'ZIP CODE or CITY, STATE'"
+                                v-model.lazy="searchInput"
+                                v-bind:class="{ 'error': !isSearchInputValid }"
+                                data-analytics-field-inputted data-analytics-type="ZIP STATE" data-analytics-name="ZIP STATE ENTRY" v-bind:data-analytics-value="searchInput">
+
+                            <button type="submit" class="button button--primary" v-on:click.prevent="updateZipDealers" data-analytics-element-clicked="" data-analytics-type="US - NO DEALERS FOUND" v-bind:data-analytics-text="searchInput" data-analytics-location="FIND DEALERS FORM" data-analytics-position="ZIP INPUT FIELD" data-analytics-outcome="INTERNALLINK"><%- image_tag( page.theme.images + '/icons/icon-search.svg', { class: 'button-icon' } ) %> Find Dealers</button>
+
+                        </form><!-- /.dealer-locator__service-area-form -->
+
+                    </div><!-- /.dealer-locator__service-area -->
+
+                </div><!-- /.columns -->
+            </div><!-- /.row -->
+        </div><!-- /.dealer-locator__no-dealers-->
+
+
+
+        <div class="dealer-locator__service-area" v-else>
+            <span class="dealer-locator__service-area-header"><span v-text="isUserCanadian ? 'Service Postal Code:' : 'Service Zip Code or City, State:'"></span></span>
+
+            <form class="dealer-locator__service-area-form">
+
+                <input
+                type="text"
+                placeholder="ZIP CODE or CITY, STATE"
+                v-model.lazy="searchInput"
+                v-bind:class="{ 'error': !isSearchInputValid }"
+                data-analytics-field-inputted data-analytics-type="ZIP STATE" data-analytics-name="ZIP STATE ENTRY" v-bind:data-analytics-value="searchInput">
+
+                <button type="submit" class="button button--primary" v-on:click.prevent="updateZipDealers" data-analytics-element-clicked="" data-analytics-type="ZIP STATE" v-bind:data-analytics-text="searchInput" data-analytics-location="FIND DEALERS FORM" data-analytics-position="ZIP INPUT FIELD" data-analytics-outcome="INTERNALLINK"><%- image_tag( page.theme.images + '/icons/icon-search.svg', { class: 'button-icon' } ) %> Find Dealers</button>
+
+            </form><!-- /.dealer-locator__service-area-form -->
+        </div><!-- /.dealer-locator__service-area -->
+
+        <div v-show="!dealersLoaded" class="dealer-locator__loader">
+            <div class="row">
+                <div class="large-12 columns">
+                        <div class="loader loader--large"></div>
+                </div><!-- /.columns -->
+            </div><!-- /.row -->
+        </div><!-- /.dealer-locator__loader -->
+
+        <div
+            v-if="dealersLoaded"
+            class="dealer-locator__slider js-dealer-slider"
+            data-analytics-form-viewed analytics-htmlid="dealer.data.companyID" data-analytics-type="RESULTSET" data-analytics-text="DEALER IMPRESSION"  data-analytics-outcome="FILTER">
+            <div
+                class="dealer-locator__card"
+                v-for="(dealer, idx) in limitedDealers"
+                v-bind:key="dealer.data.companyID"
+                v-bind:data-dealer-id="dealer.data.companyID"
+                data-analytics-form-viewed v-bind:data-analytics-htmlid="dealer.data.companyID" data-analytics-type="CARD" data-analytics-location="LIST" v-bind:data-analytics-text="'ZIP - ' + dealer.data.zipcode" v-bind:data-analytics-position="'DEALER - ' + idx" data-analytics-outcome="FILTER">
+
+                <div
+                    class="dealer-locator__card-header"
+                    v-text="dealer.data.name"
+                    v-on:click="showCertificationsModal(dealer)"></div>
+
+                <div class="dealer-locator__card-content">
+
+                    <a v-bind:href="'tel:'+formatPhone(dealer.fuseInfo.dnis || dealer.fuseInfo.permaleasePhone)+''" v-bind:data-analytics-htmlid="dealer.data.companyID" data-analytics-element-clicked="" data-analytics-type="NUMBER" data-analytics-location="CARDS" v-bind:data-analytics-text="'CALL - ' + dealer.data.name" data-analytics-position="DEALERLOCATOR" data-analytics-outcome="CLICKTOCALL">
+                        <div class="dealer-locator__card-phone clearfix">
+                            <i class="ss-phone"></i>
+                            <div class="phone-cta-wrapper">
+                                <span class="phone-cta show-for-small-only">Tap to call</span>
+                                <span class="phone-number" v-text="formatPhone(dealer.fuseInfo.dnis || dealer.fuseInfo.permaleasePhone)"></span>
+                            </div>
+                        </div>
+                    </a>
+                    <div
+                        class="dealer-locator__card-schedule button button--tertiary"
+                        v-if="allowScheduling(dealer)"
+                        v-on:click.prevent="openScheduleModal(dealer)"><i class="ss-calendar"></i> Schedule Appointment</div>
+
+                    <div class="dealer-locator__card-location"><i class="ss-location"></i> <span v-text="formatCity(dealer.data.city)"></span>, <span v-text="dealer.data.state"></span></div>
+
+                    <%- partial('../modal/modal-dealer-certifications') %>
+                </div><!-- /.dealer-locator__card-content -->
+
+                <div class="dealer-locator__card-footer">
+
+                    <div class="dealer-locator__card-certifications" v-if="showDealerCertifications(dealer)">
+
+                        <ul>
+                            <li v-if="dealer.data.nateCertified"><i class="ss-home"></i></li>
+                            <li v-if="dealer.data.dealerType !== 'NON-TCS'"><i class="ss-star"></i></li>
+                            <li v-if="dealer.data.displaySupport"><i class="ss-clock"></i></li>
+                            <li v-if="dealer.data.financeURL"><i class="ss-bank"></i></li>
+                        </ul>
+
+                    </div><!-- /.dealer-locator__card-certifications -->
+
+                    <div
+                        v-on:click.prevent="openGoogleReviewsModal(dealer)"
+                        class="dealer-locator__card-reviews"
+                        v-if="dealer.data.googleReviews && dealer.googleReviews.rating > 0"
+                        v-bind:data-analytics-htmlid="dealer.data.companyID" data-analytics-element-clicked="" data-analytics-type="LINK" data-analytics-location="CARDS" data-analytics-text="GOOGLE REVIEWS" data-analytics-position="DEALERLOCATOR" data-analytics-outcome="OPEN">
+                        <review-stars v-bind:rating="dealer.googleReviews.rating"></review-stars>
+                    </div><!-- /.dealer-locator__card-reviews -->
+
+                </div><!-- /.dealer-locator__card-footer -->
+
+            </div><!-- /.dealer-locator__card -->
+        </div><!-- /.dealer-locator -->
+
+        <div class="dealer-locator__load-dealers js-dealer-locator__load-dealers button button--no-border show-for-small-only" v-on:click="toggleMoreDealers" v-if="dealersLoaded">
+            See More <i class="ss-navigatedown"></i></div>
+
+        <ul class="dealer-locator__legend show-for-medium" v-if="!noDealersLoaded">
+           <li class="dealer-locator__legend-item"><i class="ss-home"></i> NATE Certified</li>
+           <li class="dealer-locator__legend-item"><i class="ss-star"></i> Trane Comfort Specialist</li>
+           <li class="dealer-locator__legend-item"><i class="ss-clock"></i> 24/7 Service</li>
+           <li class="dealer-locator__legend-item"><i class="ss-bank"></i> Financing Available</li>
+        </ul><!-- /.dealer-locator__legend -->
+
+    </div><!-- /.dealer-locator -->
+</script>

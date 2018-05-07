@@ -1,0 +1,12 @@
+<section class="section <%- section.type.replace('-', '--') %> <% if(section.background_type) { %><%= section.background_type %> <% } %>">
+    <div class="specialist">
+        <div class="row flexbox">
+            <div class="specialist__detail small-12 medium-12 large-6 large-offset-1 columns">
+                <comfort-specialist></comfort-specialist>
+            </div>
+            <div class="specialist__img show-for-large large-5 columns">
+                <img alt="<%- section.content.imageAlt %>" src="<%- section.content.image %>" width="457" />
+            </div>
+        </div> <!-- /.row -->
+    </div> <!-- /.specialist -->
+</section> <!-- /.section -->

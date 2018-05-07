@@ -1,0 +1,25 @@
+<script type="text/x-template" id="location-lookup">
+    <form class="location-lookup__form flexbox items-center" action="<%- url_for( '/dealer-locator.html' ) %>" method="POST" ref="form" v-bind:class="{ 'error' : isSpringPromoActive && !isSearchInputValid }">
+        <input
+            type="text"
+            v-bind:placeholder="isSpringPromoActive ? 'ZIP Code' : 'ZIP CODE or CITY, STATE'"
+            v-model.lazy="searchInput"
+            v-bind:class="{ 'error': !isSearchInputValid && !isSpringPromoActive }"
+            data-analytics-field-inputted data-analytics-type="ZIP CODE" data-analytics-name="FIELD INPUTTED" v-bind:data-analytics-value="searchInput" data-analytics-location="BANNER">
+        <button
+            v-if="isSpringPromoActive"
+            class="button button--primary button--spring-promo"
+            v-on:click.prevent="updateLocation"
+            data-analytics-element-clicked="" data-analytics-type="ZIP STATE" v-bind:data-analytics-text="searchInput" data-analytics-location="BANNER" data-analytics-position="ZIP INPUT FIELD" data-analytics-outcome="INTERNALLINK">
+                <i class="ss-navigateright"></i></button>
+        <button
+            v-else
+            class="button button--primary flex-initial"
+            v-on:click.prevent="updateLocation"
+            data-analytics-element-clicked="" data-analytics-type="ZIP STATE" v-bind:data-analytics-text="searchInput" data-analytics-location="BANNER" data-analytics-position="ZIP INPUT FIELD" data-analytics-outcome="INTERNALLINK">
+            <%- image_tag( page.theme.images + '/icons/icon-search.svg', { alt: 'Find a Local Independent Trane Dealer', class: 'button-icon' } ) %>
+            <div class="button__text">Find dealers</div>
+        </button>
+    </form>
+</script>
+
