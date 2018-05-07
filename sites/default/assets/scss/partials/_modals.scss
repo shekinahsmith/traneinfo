@@ -1,0 +1,504 @@
+////
+// Modal Styles
+////
+
+
+.modal {
+    background-color: rgba(0, 0, 0, .5);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    transition: opacity .3s ease;
+    width: 100%;
+    z-index: 9998;
+
+    // modal
+    &__body {
+        background: $color-white;
+        height: 100%;
+        margin: 0 auto;
+        max-width: 1050px;
+        overflow: scroll;
+        padding: 27px 2px 0;
+        position: relative;
+        top: 0;
+        transform: none;
+        width: 98%;
+
+        @media #{$medium-up} {
+            left: 50%;
+            margin: 0;
+            max-height: 990px;
+            padding: 46px 53px 0;
+            position: fixed;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+        }
+    }// .modal__body
+
+    // modal header
+    &__header {
+        font-size: 28px;
+
+        @media #{$large-up} {
+            font-size: 32px;
+        }
+    }// .modal__header
+
+    &__footer {
+        text-align: right;
+    }
+
+    // modal close
+    &__close {
+        cursor: pointer;
+        font-size: 24px;
+        font-weight: 800;
+        position: absolute;
+        right: 22px;
+        top: 29px;
+    }
+
+}// .modal
+
+.modal--dealer-certifications {
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    visibility: hidden;
+
+    &.is-toggled {
+        height: 100%;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .modal {
+
+        &__body {
+            height: auto;
+            left: 0;
+            padding: 40px 23px 26px;
+            position: absolute;
+            top: 10px;
+            transform: none;
+            width: 100%;
+        }// .modal__body
+
+        // modal header
+        &__header {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 21px;
+            text-transform: uppercase;
+        }// .modal__hader
+
+        // modal certifications
+        &__certifications {
+
+            // certification list
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                text-align: center;
+
+                // each certification
+                li {
+                    flex-basis: 50%;
+                    font-size: 12px;
+                    text-align: left;
+
+                    &:nth-child(-n+2) {
+                        margin-bottom: 12px;
+                    }
+
+                    &:only-of-type {
+                        text-align: center;
+                    }
+
+                    // ceritification icon
+                    i {
+                        display: inline-block;
+                        margin-right: 4px;
+                    }
+                }
+            }
+        }// .modal__certfications
+
+        &__close {
+            right: 5px;
+            top: 5px;
+        }
+    }
+}// .modal--dealer-certifications
+
+.modal--google-reviews {
+
+    .is-visible {
+        display: inline !important;
+    }
+
+    .modal {
+
+        // modal header
+        &__header {
+
+            // review starts
+            .review-stars {
+
+                // review average
+                &__number {
+                    color: $color-mine-shaft;
+                    font-size: 28px;
+
+                    @media #{$large-up} {
+                        font-size: 38px;
+                    }
+                }// .review-stars__number
+
+                // review stars
+                &__stars {
+                    font-size: 18px;
+
+                    @media #{$large-up} {
+                        font-size: 24px;
+                    }
+                }// .review-starts__stars
+
+                // hide "on Google Reviews"
+                &__text {
+                    display: none;
+                }
+            }// .review starts
+        }// .modal__header
+
+        &__dealer {
+
+            // dealer name
+            &-name {
+                color: $color-mine-shaft;
+                font-weight: 700;
+                margin-bottom: 10px;
+                width: 90%;
+
+                @media #{$large-up} {
+                    width: auto;
+                }
+            }// .modal__dealer-name
+
+            // dealer location
+            &-location {
+                font-size: 16px;
+                margin-bottom: 28px;
+            }// .modal__dealer-location
+
+            &-review-average {
+                margin-bottom: 40px;
+            }// .modal__dealer-review-average
+        }
+
+        &__review,
+        &__footer {
+            border-top: 1px solid $color-mercury;
+        }
+
+        // each review
+        &__review {
+            padding: 37px 0 26px;
+
+            // review header
+            &-header {
+                margin-bottom: 11px;
+
+                span{
+                    display: inline-flex;
+                }
+
+                .review-stars {
+                    &__number,
+                    &__text {
+                        display: none;
+                    }
+
+                    &__stars {
+                        margin-left: 10px;
+                    }
+                }
+            }// .modal__review-header
+
+            // reviewer name
+            &-name {
+                font-size: 16px;
+                font-weight: 700;
+            }
+
+            // review content
+            &-content {
+                font-size: 12px;
+                margin: 0;
+
+                .review-ellipsis {
+                    display: none;
+                }
+
+                // hidden review content
+                .review-hidden-content {
+
+                    span {
+                        display: none;
+                    }
+
+                    // displaying show more/less always
+                    .review-show-more {
+                        color: $color-steel-blue;
+                        cursor: pointer;
+                        display: inline-block;
+                        font-weight: 700;
+                        margin-left: 3px;
+                    }
+                }// .review-hidden-content
+
+            }// .modal__review-content
+
+        }// .modal__review
+
+        // footer
+        &__footer {
+            font-size: 10px;
+            padding: 28px 0;
+
+            a {
+                color: $color-steel-blue;
+                font-weight: 700;
+            }
+        }// .modal__footer
+    }
+}// .modal--google-reviews
+
+.modal--schedule-appointment {
+
+    .modal {
+
+        // success message
+        &__success {
+            margin: 86px auto 77px;
+            text-align: center;
+            width: 65%;
+
+            &-header {
+                margin-bottom: 37px;
+            }
+
+            p {
+                color: $color-mine-shaft;
+                font-size: 24px;
+                font-weight: 300;
+                line-height: 1.5;
+                margin-bottom: 0;
+            }
+        }
+
+        &__body {
+            max-width: 670px;
+            padding: 0;
+        }
+
+        // moda header
+        &__header {
+            background: $color-mine-shaft;
+            color: $color-white;
+            font-weight: 300;
+            line-height: 1.3;
+            padding: 27px 23px 41px;
+        }// .modal__header
+
+
+        &__form {
+            background: $color-white;
+
+            @media #{$medium-up} {
+                background-color:$color-wild-sand;
+                padding: 24px 26px;
+            }
+
+            // form area
+            &-area {
+                padding: 27px 12px;
+
+                @media #{$medium-up} {
+                    padding: 24px 26px;
+                }
+            }// .modal__form-area
+
+            &-group,
+            &-input-wrapper {
+                position: relative;
+            }
+
+            // input wrapper
+            &-input-wrapper {
+                display: block;
+                width: 100%;
+
+                @media #{$medium-up} {
+                    display: inline-block;
+                    width: 49%;
+
+                    &:first-child {
+                        margin-right: 1%;
+                    }
+                }
+            }// .modal__form-input-wrapper
+
+            label {
+                color: $color-dove-gray;
+                font-size: 14px;
+                font-weight: 700;
+                margin-bottom: 5px;
+            }
+
+            // input validation check mark
+            &-input-check {
+                border: 1px solid $color-silver;
+                border-radius: 100%;
+                display: block;
+                height: 20px;
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 20px;
+
+                &.is-checked {
+                    border-color: $color-shamrock;
+
+                    &:after {
+                        color: $color-shamrock;
+                        content: '\002714';
+                        font-size: 14px;
+                        left: 3px;
+                        position: absolute;
+                        top: 2px;
+                    }
+                }
+            }// .modal__form-input-check
+
+            input[type="text"],
+            input[type="number"],
+            input[type="email"],
+            input[type="search"],
+            select {
+                font-size: 16px;
+                height: 48px;
+            }
+
+            input[type="text"],
+            input[type="number"],
+            input[type="email"],
+            input[type="search"] {
+                background: $color-white;
+                border: 1px solid  $color-mercury;
+                box-shadow: none;
+                line-height: 48px;
+
+                &::-webkit-input-placeholder {
+                    @media #{$medium-up} {
+                        opacity: 0;
+                    }
+                }
+                &::-moz-placeholder {
+                    @media #{$medium-up} {
+                        opacity: 0;
+                    }
+                }
+                &:-ms-input-placeholder {
+                    @media #{$medium-up} {
+                        color: $color-white !important;
+                        opacity: 1;
+                    }
+                }
+                &:-moz-placeholder {
+                    @media #{$medium-up} {
+                        opacity: 0;
+                    }
+                }
+            }
+
+            select {
+                background: transparent;
+                line-height: 30px;
+                position: relative;
+                z-index: 2;
+            }
+            // select wrapper
+            &-select-wrapper {
+                position: relative;
+
+                // red down arrow box
+                &:after {
+                    background: $color-pomegranate;
+                    color: $color-white;
+                    content: '';
+                    font-family: "SSPika";
+                    font-size: 22px;
+                    font-style: normal;
+                    font-weight: normal;
+                    height: 48px;
+                    line-height: 48px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    text-align: center;
+                    text-decoration: none;
+                    text-rendering: optimizeLegibility;
+                    width: 48px;
+                    white-space: nowrap;
+                    -moz-font-feature-settings: "liga=1";
+                    -moz-font-feature-settings: "liga";
+                    -ms-font-feature-settings: "liga" 1;
+                    -o-font-feature-settings: "liga";
+                    font-feature-settings: "liga";
+                    -webkit-font-smoothing: antialiased;
+                    z-index: 1;
+                }
+            }// .modal__form-select-wrapper
+
+            // select place holder
+            &-select-placeholder {
+                display: none;
+                left: 10px;
+                pointer-events: none;
+                position: absolute;
+                top: 16px;
+
+                &.is-visibile{
+                    display: block;
+                }
+            }// .modal__form-select-placeholder
+        }
+
+        // modal footer
+        &__footer {
+
+            // footer disclaimer
+            &-disclaimer {
+                font-size: 14px;
+                font-style: italic;
+                margin: 6px 0 33px;
+            }// .modal__footer-disclaimer
+
+        }//.modal__footer
+
+        // modal close
+        &__close {
+            color: $color-white;
+
+            &.is-dark {
+               color:  $color-alto;
+            }
+        }// .modal__close
+    }
+
+}// .modal--schedule-appointment

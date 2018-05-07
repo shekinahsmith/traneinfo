@@ -1,0 +1,259 @@
+////
+// Banners
+////
+
+.banner {
+    color: $color-white;
+    padding: 15px 24px 33px;
+    position: relative;
+    text-align: center;
+
+    @media #{$medium-up} {
+        padding: 10px 0;
+    }
+
+    // banner mobile background
+    &__background-mobile {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }// .section__background-mobile
+
+    // ensuring section content appears above section background on mobile
+    & > .row {
+        position: relative;
+        z-index: 2;
+    }
+}// .banner
+
+// banner with background
+.banner--background {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 39px 10px 46px;
+
+    @media #{$medium-up} {
+        padding: 65px 0 62px;
+    }
+}// .banner--background
+
+// banner remove padding
+.banner--remove-padding {
+    padding: 0 10px 0;
+}
+
+// schedule appointment banner
+.banner--schedule-appointment {
+    .section__header {
+        margin-bottom: 0;
+    }
+
+    // schedule appointment cta
+    .schedule-appointment__cta {
+        padding: 12px 0 0;
+
+        @media #{$small-only} {
+            flex-direction: column;
+        }
+
+        // schedul button
+        .button {
+            border-width: 1px;
+            font-size: 16px;
+            letter-spacing: 2px;
+            padding: 16px;
+            text-transform: uppercase;
+
+            > i:before {
+                padding-left: 8px;
+            }
+
+            @media #{$small-only} {
+                border: 1px solid $color-white;
+                margin-top: 20px;
+            }
+        }// .button
+
+        @media #{$medium-up} {
+            &-phone + .button {
+                margin-left: 50px;
+            }
+        }
+
+        // schedule cta phone
+        &-phone {
+            background: $color-cod-gray;
+            color: $color-white;
+            font-size: 22px;
+            font-weight: 800;
+            padding: 5px 15px 5px 5px;
+            text-shadow: 0 0 4px rgba(0,0,0,0.43);
+
+            @media #{$medium-up} {
+                background: transparent;
+                font-size: 34px;
+                padding: 0;
+            }
+
+            &:hover {
+                color: $color-white;
+            }
+
+            // schedule phone text
+            &-text {
+                display: inline-block;
+                font-size: 16px;
+                padding: 0 4px;
+
+                @media #{$medium-up} {
+                    display: none;
+                }
+            }// .schedule-appointment__cta-phone-text
+
+            // phone icon
+            .ss-phone {
+                position: relative;
+
+                @media #{$small-only} {
+                    background: $color-thunderbird;
+                    display: inline-block;
+                    height: 42px;
+                    width: 42px;
+                    vertical-align: middle;
+                }
+
+                &:before {
+                    font-size: 28px;
+                    vertical-align: middle;
+
+                    @media #{$small-only} {
+                        font-size: 21px;
+                        left: 50%;
+                        position: absolute;
+                        transform: translate(-50%, -50%);
+                        top: 50%;
+                    }
+                }
+            }// .ss-phone
+
+        }//  .schedule-appointment__cta-phone
+
+    }// .schedule-appointment__cta
+
+}// .banner--schedule-appointment
+
+// quick tips banner
+.banner--quick-tips {
+    background-color: transparent;
+    color: $color-mine-shaft;
+    padding: 0;
+    text-align: left;
+
+    @media #{$large-up} {
+        background-color: $color-wild-sand;
+        padding: 51px 0 61px;
+    }
+
+    // quick tip
+    .quick-tip {
+        background-color: $color-wild-sand;
+        display: block;
+        position: relative;
+        margin-bottom: 6px;
+        padding: 25px 20px;
+        width: 100%;
+
+        @media #{$medium-up} {
+            margin: 0 auto 6px;
+            width: 80%;
+        }
+
+        @media #{$large-up} {
+            background-color: transparent;
+            display: inline-block;
+            margin: 0;
+            padding: 25px 0;
+            width: 32%;
+        }
+
+        // first two item
+        &:nth-child(-n+2) {
+
+            &:after {
+                content: none;
+
+                @media #{$large-up} {
+                    background: $color-silver;
+                    content: '';
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    width: 1px;
+                }
+            }
+        }
+
+        &--energy-savings {
+            &:after {
+                right: 10px;
+            }
+        }
+
+        &--hvac-maintenance {
+            &:after {
+                right: 5px;
+            }
+        }
+
+        &__icon,
+        &__content-wrap {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        &__icon {
+            margin-right: 23px;
+            text-align: center;
+            width: 22%;
+        }
+
+        &__content-wrap {
+            width: 66%;
+        }
+
+        // quick tip header
+        &__header {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+
+            @media #{$large-up} {
+                font-size: 20px;
+            }
+        }// .quick-tip__header
+
+        &__subheader {
+            font-size: 12px;
+            margin-bottom: 15px;
+
+            @media #{$large-up} {
+                font-size: 14px;
+            }
+
+        }
+
+        .button {
+            font-size: 14px;
+            padding-left: 0;
+        }
+
+    }// .quick-tip
+}// .banner--quick-tips

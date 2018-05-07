@@ -1,0 +1,33 @@
+////
+// List styles
+////
+
+// Using table val allows for cross browser compat.
+// and relieves the use of negative indents and margins
+.list {
+    display: table;
+    padding-bottom: 35px;
+
+    @media #{$medium-up} {
+        padding-left: 20px;
+    }
+}
+
+.list__item {
+    display: table-row;
+    position: relative;
+
+    &:not(:last-child) span {
+        display: table-cell;
+        padding: 4px 0;
+    }
+
+    &:before {
+        border-radius: 50%;
+        color: $color-pomegranate;
+        content: '\25CF';
+        display: table-cell;
+        font-size: 14px;
+        padding-right: 10px;
+    }
+}

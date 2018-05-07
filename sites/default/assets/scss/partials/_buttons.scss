@@ -1,0 +1,91 @@
+////
+// Button styles
+////
+
+.button {
+    border-radius: 2px;
+    box-shadow: 0 20px 19px 0 rgba(0,0,0,0.1);
+    color: $color-white;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+
+    // button icon
+    [class*="ss-"] {
+        color: $color-white;
+        display: inline-block;
+        vertical-align: text-bottom;
+    }
+
+    @media #{$large-up} {
+        font-size: 18px;
+    }
+
+} //.button
+
+.button--primary {
+    background: $color-pomegranate;
+
+    &:hover,
+    &:focus {
+        background: darken($color-pomegranate, 8%);
+    }
+
+    &[disabled] {
+        background: lighten($color-pomegranate, 10%);
+
+        &:hover {
+            background: lighten($color-pomegranate, 10%);
+        }
+    }
+
+}// .button--primary
+
+.button--secondary {
+    background: transparent;
+    border: 2px solid $color-white;
+
+    &:hover,
+    &:focus {
+        background: transparent;
+    }
+
+    @media #{$small-only} {
+        border: none;
+    }
+}// .button--secondary
+
+.button--tertiary {
+    background: transparent;
+    border: 1px solid $color-mine-shaft;
+    box-shadow: none;
+    color: $color-mine-shaft;
+
+    [class*="ss-"] {
+        color: $color-pomegranate;
+    }
+
+    &:hover,
+    &:focus {
+        background: transparent;
+        color: $color-mine-shaft;
+    }
+}// .button--tertiary
+
+.button--no-border {
+    background: transparent;
+    box-shadow: none;
+    color: $color-mine-shaft;
+
+    &:hover,
+    &:focus {
+        background: transparent;
+        color: $color-mine-shaft;
+    }
+
+    [class*="ss-"] {
+        color: $color-pomegranate;
+        display: inline-block;
+        vertical-align: middle;
+    }
+}// .button--no-border

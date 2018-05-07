@@ -1,0 +1,35 @@
+.loader {
+    animation: spin 1s linear infinite;
+    border-color: $color-pomegranate $color-alto $color-alto;
+    border-radius: 50%;
+    border-style: solid;
+    display: inline-block;
+} // .loader
+
+.loader--small {
+    border-width: 5px;
+    height: 15px;
+    width: 15px;
+} // .loader--small
+
+.loader--large {
+    border-width: 6px;
+    height: 40px;
+    width: 40px;
+
+    @media #{$large-up} {
+        border-width: 10px;
+        height: 60px;
+        width: 60px;
+    }
+} // .loader--large
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

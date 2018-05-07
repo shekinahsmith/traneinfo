@@ -1,0 +1,15 @@
+////
+// Font faces
+////
+
+// font-face mixin accepts the following arguments: $family, $src, $svgId, (optional) $weight, (optional) $style
+
+// Open Sans
+@include font-face("OpenSans", "../fonts/opensans-light-webfont", "open_sanslight", 300);
+@include font-face("OpenSans", "../fonts/opensans-regular-webfont", "open_sansregular", 400);
+@include font-face("OpenSans", "../fonts/opensans-semibold-webfont", "open_sanssemibold", 600);
+@include font-face("OpenSans", "../fonts/opensans-bold-webfont", "open_sansbold", 700);
+@include font-face("OpenSans", "../fonts/opensans-extrabold-webfont", "open_sansextrabold", 800);
+
+// SS Pika icon font
+@import "../fonts/ss-pika.css";

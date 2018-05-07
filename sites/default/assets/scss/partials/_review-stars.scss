@@ -1,0 +1,64 @@
+////
+// Review Stars Styles
+////
+
+.review-stars {
+
+    &__number,
+    &__stars {
+        display: inline-flex;
+    }
+
+    // review text
+    &__text {
+        display: block;
+        white-space: nowrap;
+    }
+
+    &__number,
+    &__text {
+        font-weight: 700;
+    }
+
+    // review number
+    &__number {
+        font-size: 14px;
+    }
+
+    // review text
+    &__text {
+        color: $color-steel-blue;
+        font-size: 12px;
+        margin-top: 3px;
+    }
+
+    // review star list
+    &__stars {
+
+        // review star
+        li {
+            color: $color-pomegranate;
+            display: inline-block;
+            margin-right: 2px;
+            position: relative;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            i {
+                &.is-inactive {
+                    color: $color-alto;
+                }
+
+                &.ss-halfstar {
+                    position: absolute;
+                    left: -17%;
+                    top: 0;
+                }
+            }
+        }
+
+    }// .review-stars__stars
+
+}// .review-stars

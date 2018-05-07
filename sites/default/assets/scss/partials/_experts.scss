@@ -1,0 +1,136 @@
+////
+// Expert Styles
+////
+
+$align-content: 35;
+
+.experts {
+    padding: 25px 0 15px;
+
+    @media #{$large-up} {
+        padding: $align-content + px 0 0;
+    }
+}
+
+.experts__detail {
+    @media #{$large-up} {
+        margin-top: -$align-content + px;
+    }
+
+    @media #{$medium-up} {
+        max-width: 800px;
+    }
+
+    .section__header {
+        margin-bottom: 12px;
+    }
+
+    p {
+        margin-bottom: 25px;
+    }
+
+    p:last-of-type {
+        margin-bottom: 0;
+    }
+}
+
+.experts__img {
+    display: none;
+    margin-right: 50px;
+    max-width: 375px;
+
+    @media #{$large-up} {
+        display: inline-block;
+    }
+}
+
+.experts__services {
+    padding: 35px 0 0;
+
+    @media #{$medium-only} {
+        padding-bottom: 25px;
+    }
+
+    @media #{$small-only} {
+        flex-direction: column;
+        padding: 25px 0;
+    }
+}
+
+.services {
+    margin: 0 18px;
+    width: 105px;
+
+    @media #{$small-only} {
+        width: 100%;
+    }
+}
+
+.services__icon {
+    background-color: #BEBEBE;
+    border-radius: 50%;
+    height: 88px;
+    position: relative;
+    width: 88px;
+
+    @media #{$small-only} {
+        display: none;
+    }
+}
+
+.icon__inner {
+    background-color: $color-white;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    height: 72px;
+    position: relative;
+    width: 72px;
+}
+
+.icon__inner,
+.services__icon img,
+.services__icon__wrap {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.services__icon__wrap {
+    height: 32px;
+    width: 32px;
+
+    &--systems {
+        width: 38px;
+    }
+}
+
+.services__text {
+    color: $color-mine-shaft;
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.2;
+    padding-top: 12px;
+    text-transform: uppercase;
+
+    @media #{$small-only} {
+        &:before {
+            background: $color-mine-shaft;
+            border-radius: 50%;
+            content: '';
+            display: inline-block;
+            height: 4px;
+            margin: 0 8px 0 0;
+            width: 4px;
+            vertical-align: middle;
+        }
+    }
+
+    span {
+        display: block;
+
+        @media #{$small-only} {
+            display: inline-block;
+        }
+    }
+}

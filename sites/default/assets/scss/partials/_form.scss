@@ -1,0 +1,187 @@
+////
+// Form styles
+////
+
+.form {
+    &__row-to-col {
+        display: flex;
+        flex-direction: column;
+
+        @media #{$medium-up} {
+            flex-direction: row;
+        }
+
+        .field__wrap {
+            flex: 1 0 auto;
+
+            + .field__wrap {
+                @media #{$medium-up} {
+                    margin-left: 18px;
+                }
+            }
+        }
+    }
+
+    &__row-mobile {
+        display: flex;
+
+        @media #{$medium-up} {
+            flex: 1 0 auto;
+            margin-left: 18px;
+        }
+
+        .field__wrap {
+            flex: 1;
+
+            + .field__wrap {
+                @media #{$small-only} {
+                    margin-left: 6px;
+                }
+            }
+        }
+    }
+
+    &__label {
+        color: $color-dove-gray;
+        font-size: 14px;
+        font-weight: 700;
+        padding: 0 0 2px;
+        position: relative;
+        text-align: left;
+
+        @media #{$small-only} {
+            display: none;
+        }
+
+        &:after {
+            border: 1px solid $color-silver;
+            border-radius: 50%;
+            content: '';
+            height: 22px;
+            position: absolute;
+            right: 0;
+            width: 22px;
+        }
+
+        &--isValid {
+            @media #{$small-only} {
+                + input,
+                + input:focus,
+                + .form__dropdown select,
+                + .form__dropdown select:focus {
+                    border: 1px solid $color-shamrock;
+                }
+            }
+
+            &:after {
+                animation: zoomIn 0.4s both;
+                background: url('/residential/p/assets/default/images/icons/icon-checkmark-circle.svg') no-repeat;
+                border: 0;
+                border-radius: 0;
+                content: '';
+            }
+        }
+    }
+
+    &__input,
+    &__select {
+        border: 1px solid $color-mercury;
+        box-shadow: none;
+        color: $color-mine-shaft;
+        font-size: 12px;
+        margin: 0;
+
+        @media #{$medium-up} {
+            font-size: 16px;
+
+            // IE hack to hide placeholder on desktop per design
+            // Opacity or Visibility will affect the entire input in IE
+            &::-webkit-input-placeholder    { color: $color-white !important; }
+            &::-moz-placeholder             { color: $color-white !important; }
+            &:-ms-input-placeholder         { color: $color-white !important; }
+            &:-moz-placeholder              { color: $color-white !important; }
+        }
+    }
+
+    &__dropdown {
+        position: relative;
+
+        &:before,
+        .ss-icon {
+            pointer-events: none;
+        }
+
+        &:before {
+            background: $color-pomegranate;
+            content: '';
+            height: 100%;
+            pointer-events: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 45px;
+        }
+
+        .ss-icon {
+            color: $color-white;
+            font-size: 18px;
+            height: 14px;
+            position: absolute;
+            right: 13px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        // select place holder
+        &-placeholder {
+            display: none;
+            left: 10px;
+            pointer-events: none;
+            position: absolute;
+            top: 14px;
+
+            &.is-visibile{
+                display: block;
+            }
+        }// .modal__form-select-placeholder
+    }
+
+    .button {
+        box-shadow: none;
+        font-size: 14px;
+        line-height: normal;
+        margin: 12px 0 0 12px;
+        padding: 8px 12px;
+
+        @media #{$medium-up} {
+            font-size: 16px;
+            padding: 12px 20px;
+        }
+
+        .ss-icon {
+            vertical-align: middle;
+        }
+    }
+}
+
+.field__wrap {
+    margin-bottom: 6px;
+    position: relative;
+
+    @media #{$medium-up} {
+        margin-bottom: 22px;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}

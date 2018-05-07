@@ -1,0 +1,80 @@
+////
+// Section styles
+////
+
+.section {
+    padding: 30px 10px 40px;
+    position: relative;
+    text-align: center;
+
+    // section mobile background
+    &__background-mobile {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+    }// .section__background-mobile
+
+    // ensuring section content appears above section background on mobile
+    & > .row {
+        position: relative;
+        z-index: 2;
+    }
+
+    @media #{$medium-up} {
+        padding: 60px 0 70px;
+    }
+
+    // section intro
+    &__intro {
+        color: $color-mine-shaft;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 1.7;
+        margin: 0 0 25px;
+        text-align: left;
+    }// .section__intro
+
+    // section header
+    &__header {
+        display: inline-block;
+        margin-bottom: 25px;
+
+        @media #{$medium-up} {
+            margin-bottom: 35px;
+        }
+    }// .section__header
+
+} //.section
+
+.section--gradient {
+    background: linear-gradient($color-white 0%, $color-wild-sand 100%);
+}
+
+.section--dark {
+    background-color: #151515;
+}
+
+// banner remove padding
+.section--remove-padding {
+    padding: 0 10px 0;
+}
+
+// product category section
+.section--product-category {
+    .section__header {
+        margin-bottom: 0;
+    }
+}
+
+// dealer locator section
+.section--dealer-locator {
+    p {
+        margin: 20px 0 35px;
+    }
+}

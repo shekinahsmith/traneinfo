@@ -1,0 +1,68 @@
+////
+// Offer Card Styles
+////
+
+.offer-card {
+    background-color: $color-white;
+    border: 1px solid $color-dusty-gray;
+    padding: 30px 20px 20px;
+
+    @media #{$small-only} {
+        padding: 20px 10px 10px;
+    }
+    
+
+    .headline {
+        margin: 0;
+        max-width: none;
+        padding: 0 0 15px;
+    }
+    
+    .card-cta {
+        &__actions {
+            display: block;
+            padding: 40px 0;
+            text-align: left;
+        }
+
+        .headline {
+            padding: 0 0 30px;
+        }
+    }
+
+    .card-disclaimer {
+        background-color: $color-mercury;
+        color: $color-mine-shaft;
+        font-size: 10px;
+        padding: 15px 20px;
+
+        p {
+            margin-bottom: 5px;
+        }
+    }
+
+    .card-cta__dates {
+        @media #{$small-only} {
+            flex-direction: column;
+        }
+
+        .dates {
+            color: $color-mine-shaft;
+            text-align: left;
+
+            &:not(:last-child) {
+                margin: 0 80px 0 0;
+
+                @media #{$small-only} {
+                    margin: 0 0 20px;
+                }
+            }
+        }
+        
+        .dates__title {
+            display: block;
+            font-weight: 800;
+            padding: 0 0 10px;
+        }
+    }
+}

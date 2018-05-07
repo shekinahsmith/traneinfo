@@ -1,0 +1,15 @@
+@charset 'utf-8';
+
+// Bring in the base styles
+@import 'partials/global/all';
+
+// Bring in the Foundation
+@import 'vendor/foundation/foundation';
+@import 'vendor/slick/slick-theme';
+@import 'vendor/slick/slick';
+
+// Partial styles
+@import 'partials/all';
+
+// Page styles
+// @import 'partials/page-index';

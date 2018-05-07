@@ -1,0 +1,72 @@
+.location-lookup {
+    @media #{$small-only} {
+        flex-direction: column;
+        padding: 24px 0 82px;
+    }
+
+    &__form {
+        background-color: $color-white;
+        border-radius: 2px;
+        height: 54px;
+        margin: 8px 0 8px 40px;
+        padding: 0 8px;
+        width: 34%;
+
+        @media #{$small-only} {
+            background: transparent;
+            flex-direction: column;
+            margin: 24px 0 0;
+            width: 100%;
+        }
+
+        input,
+        input:focus {
+            border: 0;
+            border-bottom: 1px solid $color-dusty-gray;
+            box-shadow: none;
+
+            @media #{$small-only} {
+                border: 0;
+                padding: 24px 12px;
+            }
+        }
+
+        input {
+            font-size: 14px;
+            margin: 0;
+
+            &.error {
+                border-color: $color-pomegranate;
+            }
+        }
+
+        .button {
+            @media #{$medium-up} {
+                border-radius: 50%;
+                box-shadow: none;
+                height: 42px;
+                margin: 0 0 0 8px;
+                padding: 0;
+                width: 42px;
+
+                > img {
+                    width: 19px;
+                }
+            }
+
+            @media #{$small-only} {
+                margin: 18px 0;
+                padding: 12px 24px;
+            }
+
+            .button__text {
+                display: none;
+
+                @media #{$small-only} {
+                    display: inline-block;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+}

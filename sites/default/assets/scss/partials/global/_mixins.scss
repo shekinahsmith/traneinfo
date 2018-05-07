@@ -1,0 +1,25 @@
+////
+// Global mixins
+////
+
+// src: https://coderwall.com/p/4hd9bw/easy-embedding-of-web-fonts-using-a-sass-mixin
+@mixin font-face($family, $src, $svgId, $weight: normal, $style: normal) {
+    @font-face {
+        font-family: $family;
+        src: url('#{$src}.eot'); // IE9 compat
+        src: url('#{$src}.eot?#iefix') format('embedded-opentype'), // IE8 and below
+        url('#{$src}.woff') format('woff'), // standards
+        url('#{$src}.ttf') format('truetype'), // Safari, Android, iOS
+        url('#{$src}.svg##{$svgId}') format('svg'); // legacy iOS
+        font-weight: $weight;
+        font-style: $style;
+    }
+}
+
+@mixin headerHeight() {
+    height: $header-height-mobile;
+
+    @media #{$medium-up} {
+        height: $header-height-desktop;
+    }
+}

@@ -1,0 +1,70 @@
+////
+// Base
+////
+
+body {
+    background-color: $color-white;
+    color: $color-dove-gray;
+    font-family: 'OpenSans';
+    font-size: 14px;
+    font-weight: 400;
+    height: 100%;
+    line-height: 1;
+    overflow-x: hidden;
+    padding-top: $header-height-mobile;
+    position: relative;
+    width: 100%;
+
+    @media #{$medium-up} {
+        padding-top: $header-height-desktop;
+    }
+} //body
+
+div, span, h1, h2, h3, h4, h5, h6, p, a, small, strong, sub, sup, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav,  section,  {
+    font-family: 'OpenSans';
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+}
+
+a {
+    color: inherit;
+}
+
+p {
+    line-height: 1.9;
+    margin-bottom: 30px;
+
+    // Strip margin from the last div element only if
+    // there exists a container that has at least 1 child div
+    &:nth-last-child(n+1) ~ p:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* Placeholder */
+::-webkit-input-placeholder {
+    color: $color-dove-gray !important;
+}
+
+::-moz-placeholder {
+    color: $color-dove-gray !important;
+}
+
+:-ms-input-placeholder {
+    color: $color-dove-gray !important;
+}
+
+:-moz-placeholder {
+    color: $color-dove-gray !important;
+}
+
+.smarty-ui {
+    z-index: 99999;
+}
+
+.smarty-tag {
+    visibility: hidden;
+}

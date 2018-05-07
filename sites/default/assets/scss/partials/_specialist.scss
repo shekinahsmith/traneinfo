@@ -1,0 +1,51 @@
+////
+// Specialist Styles
+////
+
+.specialist {
+
+    // allowing for content for the success message to show vertically aligned
+    & > .row {
+        align-items: center;
+        justify-content: center;
+    }
+
+    // success message
+    &__success {
+
+        &-image {
+            height: 58px;
+            margin: 0 auto 30px;
+            width: 58px;
+
+            @media #{$medium-up} {
+                height: 83px;
+                margin: 0 auto 38px;
+                width: 83px;
+            }
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }// .specialist__success-image
+
+        &-headline {
+            margin-bottom: 29px;
+        }
+
+        p {
+            margin-bottom: 0;
+        }
+    }// .specialist__success
+
+    // headline
+    .headline--5 {
+        color: $color-mine-shaft;
+        line-height: 1.6;
+
+        @media #{$small-only} {
+            font-size: 18px;
+        }
+    }// .headline--5
+}// .specialist
