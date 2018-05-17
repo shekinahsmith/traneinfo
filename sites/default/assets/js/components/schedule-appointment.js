@@ -11,7 +11,7 @@ export default Vue.component('modal-schedule-appointment', {
   template: '#modal-schedule-appointment',
   data() {
     return {
-      formEndPoint: 'https://stg.irapis.com/forms',
+      formEndPoint: 'https://api-goes-here.com',
       formData: {
         firstName: null,
         lastName: null,
