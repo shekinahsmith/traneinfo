@@ -12,7 +12,7 @@ export default Vue.component('comfort-specialist', {
   data() {
     return {
       errors: [],
-      formEndPoint: 'https://prd.irapis.com/forms/traneinfo/new-dealer',
+      formEndPoint: 'https://api-goes-here.com',
       comfortSpecialist: {},
       formData: {
         dealername: null,
