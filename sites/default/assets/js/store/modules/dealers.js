@@ -3,9 +3,10 @@
 import cookies from '../../modules/storages';
 import types from '../types/index';
 
+/* API hidden for security reasons */
 export default {
   state: {
-    dealerEndPointBase: 'https://prd.irapis.com/dealers/trane-info/locate?brand=TRANE&',
+    dealerEndPointBase: 'https://api-for-dealer-goes-here.com',
     dealersLoaded: false,
     list: [],
     selectedId: null,
