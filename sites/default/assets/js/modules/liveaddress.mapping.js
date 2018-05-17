@@ -14,7 +14,7 @@ export default {
       },
     ];
     window.liveAddress = $.LiveAddress({
-      key: '5559209878226016',
+      key: 'smartystreetskey',
       autocomplete: 3,
       autoVerify: true,
       waitForStreet: true,
